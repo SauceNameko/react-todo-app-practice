@@ -28,3 +28,16 @@ export const editTodo = async (id, title, description, completed) => {
     const data = await res.json();
     return data;
 }
+
+// タスク削除
+export const deleteTodo = async (id) => {
+    const res = await fetch(`${api}/todos/${id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+    })
+    if (res.status == 204) return true;
+    else {
+        const data = await res.json();
+        return data;
+    }
+}

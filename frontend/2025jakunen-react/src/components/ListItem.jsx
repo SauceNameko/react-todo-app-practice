@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export const ListItem = ({ item }) => {
+export const ListItem = ({ item, handleClickDelete }) => {
     return (
         <div className="w-[30%] mb-6 rounded-2xl shadow border border-gray-400 bg-white overflow-hidden">
             <div className="bg-sky-500 text-white text-[18px] font-semibold px-4 py-3">
@@ -22,7 +22,8 @@ export const ListItem = ({ item }) => {
                     </button>
                 </Link>
                 <button
-                    className="px-3 py-1 text-sm bg-red-500 hover:bg-red-600 text-white rounded"
+                    className="px-3 py-1 text-sm bg-red-500 hover:bg-red-700 text-white rounded"
+                    onClick={() => handleClickDelete(item.id)}
                 >
                     削除
                 </button>
