@@ -1,6 +1,7 @@
 import { api } from "../api/apiPath";
 // 一覧表示
 export const getTodo = async () => {
+
     const res = await fetch(`${api}/todos`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
@@ -40,4 +41,24 @@ export const deleteTodo = async (id) => {
         const data = await res.json();
         return data;
     }
+}
+
+// タスク完了
+export const completeTodo = async (id) => {
+    const res = await fetch(`${api}/todos/${id}/complete`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+    })
+    const data = await res.json();
+    return data;
+}
+
+// タスク完了
+export const uncompleteTodo = async (id) => {
+    const res = await fetch(`${api}/todos/${id}/uncomplete`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+    })
+    const data = await res.json();
+    return data;
 }

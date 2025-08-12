@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom"
+import { useTask } from "../context/TaskContext";
 
-export const EditItemScene = ({ list, handleClickEdit }) => {
+export const EditItemScene = () => {
+    const { list, handleClickEdit: onEdit } = useTask();
     const [item, setItem] = useState([]);
     const title = useRef();
     const description = useRef();
@@ -16,7 +18,7 @@ export const EditItemScene = ({ list, handleClickEdit }) => {
     }, [list]);
 
     return (
-        <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-2xl shadow-md">
+        <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-2xl shadow-md text-gray-700">
             <h2 className="text-3xl font-semibold mb-6 text-center">タスクを編集</h2>
 
             <div className="mb-4">
@@ -63,7 +65,7 @@ export const EditItemScene = ({ list, handleClickEdit }) => {
             </div>
             <button className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition"
                 onClick={() =>
-                    handleClickEdit(
+                    onEdit(
                         id,
                         title.current.value,
                         description.current.value,

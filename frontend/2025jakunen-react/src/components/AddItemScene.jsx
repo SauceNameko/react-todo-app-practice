@@ -1,10 +1,12 @@
 import { useRef } from "react";
+import { useTask } from "../context/TaskContext";
 
-export const AddItemScene = ({ handleClickAdd }) => {
+export const AddItemScene = () => {
+    const { handleClickAdd: onAdd } = useTask();
     const title = useRef();
     const description = useRef();
     return (
-        <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-2xl shadow-md">
+        <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-2xl shadow-md text-gray-700">
             <h2 className="text-3xl font-semibold mb-6 text-center">タスクを追加</h2>
 
             <div className="mb-4">
@@ -36,7 +38,7 @@ export const AddItemScene = ({ handleClickAdd }) => {
             </div>
 
             <button className="w-full bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2 px-4 rounded-lg transition"
-                onClick={() => handleClickAdd(title.current.value, description.current.value)}
+                onClick={() => onAdd(title.current.value, description.current.value)}
             >
                 追加する
             </button>
